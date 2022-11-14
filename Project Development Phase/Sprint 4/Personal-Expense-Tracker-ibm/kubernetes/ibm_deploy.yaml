@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: finbud-app
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: finbud-app
+  template:
+    metadata:
+      labels:
+        app: finbud-app
+
+    spec:
+      containers:
+        - name: finbud-container
+          image: us.icr.io/zenikfinapp/finbud
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 5000
+              protocol: TCP
